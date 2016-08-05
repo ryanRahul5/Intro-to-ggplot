@@ -105,9 +105,20 @@ x <- strptime(datestring, %B %d, %Y %H:%M)
 
 
 
+## Example Data --- Housing Prices
 
+housing <- read.csv("dataSets/landdata-states.csv")
+head(housing[1:5])
 
-
+library(ggplot2)
+ggplot(housing, aes(x = Home.Value)) +
+  geom_histogram()
+  
+ggplot(subset(housing, State %in% c("MA", "TX")),
+       aes(x=Date,
+           y=Home.Value,
+           color=State))+
+  geom_point()
 
 
 
